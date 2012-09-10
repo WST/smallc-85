@@ -1,3 +1,8 @@
+This fork from https://github.com/ncb85/SmallC-85 has no functional
+changes, only a few build scripts.
+
+- - -
+
 Revived version of SmallC based on Chris Lewis' port to UNIX V. I have
 mainly rewritten code to use structures and to make it compile using GCC
 silently without warnigns.
