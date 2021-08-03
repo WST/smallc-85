@@ -119,12 +119,12 @@ void fpubext(SYMBOL *scptr) {
 }
 
 /**
- * Output a HEX number
+ * Output a number
  * @param num
  */
 void output_number(num) int num; {
     output_decimal(num);
-    output_byte('h');
+    //output_byte('h');
 }
 
 /**
