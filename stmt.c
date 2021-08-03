@@ -6,6 +6,19 @@
 #include "defs.h"
 #include "data.h"
 
+// WST
+void doif();
+void dodo();
+void dowhile();
+void doswitch();
+void dofor();
+void docase();
+void dodefault();
+void doreturn();
+void dobreak();
+void docont();
+void dumpsw(WHILE *ws);
+
 /**
  * statement parser
  * called whenever syntax requires a statement.  this routine
@@ -130,14 +143,14 @@ do_statement () {
  * 'func' is true if we are in a "function_statement", which
  * must contain "statement_list"
  */
-do_compound(int func) {
+int do_compound(int func) {
         int     decls;
 
         decls = YES;
         ncmp++;
         while (!match ("}")) {
                 if (feof (input))
-                        return;
+                        return 0;
                 if (decls) {
                         if (!statement_declare ())
                                 decls = NO;
@@ -150,7 +163,7 @@ do_compound(int func) {
 /**
  * "if" statement
  */
-doif() {
+void doif() {
         int     fstkp, flab1, flab2;
         int     flev;
 
@@ -176,7 +189,7 @@ doif() {
 /**
  * "while" statement
  */
-dowhile() {
+void dowhile() {
         WHILE ws; //int     ws[7];
 
         ws.symbol_idx = local_table_index;
@@ -198,7 +211,7 @@ dowhile() {
 /**
  * "do" statement
  */
-dodo() {
+void dodo() {
         WHILE ws; //int     ws[7];
 
         ws.symbol_idx = local_table_index;
@@ -225,7 +238,7 @@ dodo() {
 /**
  * "for" statement
  */
-dofor() {
+void dofor() {
         WHILE ws; //int     ws[7],
         WHILE *pws;
 
@@ -270,7 +283,7 @@ dofor() {
 /**
  * "switch" statement
  */
-doswitch() {
+void doswitch() {
         WHILE ws; //int     ws[7];
         WHILE *ptr; //int     *ptr;
 
@@ -304,7 +317,7 @@ doswitch() {
 /**
  * "case" label
  */
-docase() {
+void docase() {
         int     val;
 
         val = 0;
@@ -322,7 +335,7 @@ docase() {
 /**
  * "default" label
  */
-dodefault() {
+void dodefault() {
         WHILE *ptr; //int     *ptr,
         int        lab;
 
@@ -338,7 +351,7 @@ dodefault() {
 /**
  * "return" statement
  */
-doreturn() {
+void doreturn() {
         if (endst () == 0)
                 expression (YES);
         gen_jump(fexitlab);
@@ -347,7 +360,7 @@ doreturn() {
 /**
  * "break" statement
  */
-dobreak() {
+void dobreak() {
         WHILE *ptr; //int     *ptr;
 
         if ((ptr = readwhile ()) == 0)
@@ -359,7 +372,7 @@ dobreak() {
 /**
  * "continue" statement
  */
-docont() {
+void docont() {
         WHILE *ptr; //int     *ptr;
 
         if ((ptr = findwhile ()) == 0)
@@ -374,7 +387,7 @@ docont() {
 /**
  * dump switch table
  */
-dumpsw(WHILE *ws) {
+void dumpsw(WHILE *ws) {
 //int     ws[];
         int     i,j;
 

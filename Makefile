@@ -17,7 +17,7 @@ ifdef SystemRoot
    CFLAGS = '$(INSTFLAGS)' -O
 else
    ifeq ($(shell uname), Linux)
-       CFLAGS = '$(INSTFLAGS)' -O
+       CFLAGS = '$(INSTFLAGS)' -O -Wno-implicit-function-declaration -Wno-implicit-int
    endif
 endif
 

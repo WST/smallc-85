@@ -8,6 +8,8 @@
 #include "defs.h"
 #include "data.h"
 
+void addmac();
+
 /**
  * remove "brackets" surrounding include file name
  * @see DEFLIB
@@ -90,7 +92,7 @@ dodefine ()
         addmac();
 }
 
-doundef ()
+void doundef ()
 {
         int     mp;
         char    sname[NAMESIZE];
@@ -107,14 +109,13 @@ doundef ()
 
 }
 
-preprocess ()
+void preprocess ()
 {
         if (ifline()) return;
         while (cpp());
 }
 
-doifdef (ifdef)
-int ifdef;
+void doifdef(int ifdef)
 {
         char sname[NAMESIZE];
         int k;
@@ -284,7 +285,7 @@ char *s;
         addmac();
 }
 
-addmac ()
+void addmac ()
 {
         char    sname[NAMESIZE];
         int     k;

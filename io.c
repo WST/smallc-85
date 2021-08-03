@@ -8,10 +8,12 @@
 #include "defs.h"
 #include "data.h"
 
+void fixname(char *s);
+
 /*
  *      open input file
  */
-openin (p) char *p;
+int openin (p) char *p;
 {
         strcpy(fname, p);
         fixname (fname);
@@ -56,8 +58,7 @@ char    *s;
 /**
  * remove NL from filenames
  */
-fixname (s)
-char    *s;
+void fixname (char *s)
 {
         while (*s && *s++ != LF);
         if (!*s) return;
@@ -86,7 +87,7 @@ kill () {
         line[lptr] = 0;
 }
 
-readline () {
+void readline () {
         int     k;
         FILE    *unit;
 

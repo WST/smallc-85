@@ -7,6 +7,8 @@
 #include "defs.h"
 #include "data.h"
 
+void blanks();
+
 /**
  * test if given character is alpha
  * @param c
@@ -177,7 +179,7 @@ amatch(char *lit, int len) {
     return (0);
 }
 
-blanks() {
+void blanks() {
     FOREVER {
         while (ch () == 0) {
             preprocess ();

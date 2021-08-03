@@ -7,7 +7,7 @@
 #include "defs.h"
 #include "data.h"
 
-addwhile (WHILE *ptr) {
+void addwhile (WHILE *ptr) {
 //int     ptr[];
     //int     k;
 

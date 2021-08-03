@@ -28,11 +28,12 @@ void header () {
         output_string ("; Small C 8080;\n;\tCoder (2.4,84/11/27)\n;");
         frontend_version();
         newline ();
-        output_line ("\t;program area SMALLC_GENERATED is RELOCATABLE");
-        output_line ("\t.area\tSMALLC_GENERATED\t(REL,CON)");
-        output_line ("\t.module SMALLC_GENERATED");
-        output_line ("\t.list   (err, loc, bin, eqt, cyc, lin, src, lst, md)");
-        output_line ("\t.nlist  (pag)");
+        //output_line ("\t;program area SMALLC_GENERATED is RELOCATABLE");
+        //output_line ("\t.area\tSMALLC_GENERATED\t(REL,CON)");
+        //output_line ("\t.module SMALLC_GENERATED");
+        //output_line ("\t.list   (err, loc, bin, eqt, cyc, lin, src, lst, md)");
+        //output_line ("\t.nlist  (pag)");
+        output_line (".org 0");
 }
 
 /**
@@ -85,14 +86,14 @@ void trailer() {
  * text (code) segment
  */
 void code_segment_gtext() {
-    output_line ("\t.area  SMALLC_GENERATED  (REL,CON,CSEG)");
+    //output_line ("\t.area  SMALLC_GENERATED  (REL,CON,CSEG)");
 }
 
 /**
  * data segment
  */
 void data_segment_gdata() {
-    output_line ("\t.area  SMALLC_GENERATED_DATA  (REL,CON,DSEG)");
+    //output_line ("\t.area  SMALLC_GENERATED_DATA  (REL,CON,DSEG)");
 }
 
 /**
@@ -118,12 +119,12 @@ void fpubext(SYMBOL *scptr) {
 }
 
 /**
- * Output a decimal number to the assembler file, with # prefix
+ * Output a HEX number
  * @param num
  */
 void output_number(num) int num; {
-    output_byte('#');
     output_decimal(num);
+    output_byte('h');
 }
 
 /**
@@ -311,7 +312,7 @@ gen_call(char *sname) {
  * declare entry point
  */
 declare_entry_point(char *symbol_name) {
-    output_string(symbol_name);
+    //output_string(symbol_name);
     output_label_terminator();
     //newline();
 }

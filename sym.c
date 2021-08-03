@@ -12,7 +12,7 @@
  * @param storage
  * @return 
  */
-declare_global(int type, int storage) {
+void declare_global(int type, int storage) {
         int     k, j;
         char    sname[NAMESIZE];
 
@@ -52,7 +52,7 @@ declare_global(int type, int storage) {
  * @param typ
  * @param stclass
  */
-declare_local (typ, stclass)
+void declare_local (typ, stclass)
 int     typ, stclass;
 {
         int     k, j;
@@ -173,7 +173,7 @@ init(char *symbol_name, int size, int ident, int *dim) {
  * get required array size. [xx]
  * @return array size
  */
-needsub () {
+int needsub () {
         int     num[1];
 
         if (match ("]"))

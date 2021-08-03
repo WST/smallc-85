@@ -40,7 +40,7 @@ nosign(lvalue_t *is) {
  * @param comma
  * @return 
  */
-expression(int comma) {
+void expression(int comma) {
         lvalue_t lval;
         int k;
 

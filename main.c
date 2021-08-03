@@ -8,6 +8,10 @@
 #include "defs.h"
 #include "data.h"
 
+void compile(char *file);
+void dumplits();
+void dumpglbs();
+
 main(int argc, char *argv[]) {
     char *param = NULL, *bp;
     int smacptr, i;
@@ -81,7 +85,7 @@ main(int argc, char *argv[]) {
  * @param file filename
  * @return 
  */
-compile(char *file) {
+void compile(char *file) {
     if (file == NULL || filename_typeof(file) == 'c') {
         global_table_index = 1; //glbptr = STARTGLB;
         local_table_index = NUMBER_OF_GLOBALS; //locptr = STARTLOC;
@@ -218,7 +222,7 @@ dodcls(int stclass) {
 /**
  * dump the literal pool
  */
-dumplits() {
+void dumplits() {
     int j, k;
 
     if (litptr == 0)
@@ -243,7 +247,7 @@ dumplits() {
 /**
  * dump all static variables
  */
-dumpglbs() {
+void dumpglbs() {
     int dim, i, list_size, line_count, value;
 
     if (!glbflag)
